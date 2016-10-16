@@ -1,0 +1,40 @@
+group 'com.scottmmjackson.spark_kotlin_elastic.demo'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext.kotlin_version = '1.0.4'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.4"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'application'
+
+mainClassName = "AppKt"
+
+sourceSets.main.resources.srcDirs = ["src/resources"]
+
+defaultTasks 'run'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://maven.elasticsearch.org/releases"
+    }
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.0.4"
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.7'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.7'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-1.2-api', version: '2.7'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
+    compile "com.sparkjava:spark-core:2.5"
+    compile 'org.elasticsearch:elasticsearch:2.1.0'
+    compile "com.natpryce:konfig:1.4.1.0"
+}
